@@ -71,9 +71,9 @@
             label = "EXTRA";
 
             bindings = <
-&kp Q             &kp W              &kp E              &to BASE           &kp T              &kp Y              &kp U              &kp I              &kp O              &kp P
+&kp Q             &kp W              &kp E              &kp R              &kp T              &kp Y              &kp U              &kp I              &kp O              &kp P
 &kp A             &kp S              &kp D              &kp F              &kp G              &kp H              &kp J              &kp K              &kp L              &kp SQT
-&kp Q             &kp Z              &kp X              &kp C              &kp V              &kp B              &kp N              &kp M              &kp COMMA          &kp DOT            &kp SLASH          &kp BSLH
+&to BASE          &kp Z              &kp X              &kp C              &kp V              &kp B              &kp N              &kp M              &kp COMMA          &kp DOT            &kp SLASH          &kp BSLH
                   &kp ESC            &kp SPACE          &kp TAB            &kp RET            &kp BSPC           &kp DEL
             >;
         };
@@ -82,9 +82,9 @@
             label = "TAP";
 
             bindings = <
-&kp Q             &kp W              &kp F              &to BASE           &kp B              &kp J              &kp L              &kp U              &kp Y              &kp SQT
+&kp Q             &kp W              &kp F              &kp P              &kp B              &kp J              &kp L              &kp U              &kp Y              &kp SQT
 &kp A             &kp R              &kp S              &kp T              &kp G              &kp M              &kp N              &kp E              &kp I              &kp O
-&kp Q             &kp Z              &kp X              &kp C              &kp D              &kp V              &kp K              &kp H              &kp COMMA          &kp DOT            &kp SLASH          &kp BSLH
+&to BASE          &kp Z              &kp X              &kp C              &kp D              &kp V              &kp K              &kp H              &kp COMMA          &kp DOT            &kp SLASH          &kp BSLH
                   &kp ESC            &kp SPACE          &kp TAB            &kp RET            &kp BSPC           &kp DEL
             >;
         };
@@ -93,9 +93,9 @@
             label = "BUTTON";
 
             bindings = <
-&kp K_UNDO        &kp LS(DEL)        &kp LS(INS)        &to BASE           &kp K_AGAIN        &kp K_AGAIN        &kp LC(INS)        &kp LS(INS)        &kp LS(DEL)        &kp K_UNDO
-&kp LGUI          &kp LALT           &kp LCTRL          &kp LSHFT          &none              &none              &kp LSHFT          &kp LCTRL          &kp LALT           &kp LGUI
 &kp K_UNDO        &kp LS(DEL)        &kp LS(INS)        &kp LC(INS)        &kp K_AGAIN        &kp K_AGAIN        &kp LC(INS)        &kp LS(INS)        &kp LS(DEL)        &kp K_UNDO
+&kp LGUI          &kp LALT           &kp LCTRL          &kp LSHFT          &none              &none              &kp LSHFT          &kp LCTRL          &kp LALT           &kp LGUI
+&to BASE          &kp LS(DEL)        &kp LS(INS)        &kp LC(INS)        &kp K_AGAIN        &kp K_AGAIN        &kp LC(INS)        &kp LS(INS)        &kp LS(DEL)        &kp K_UNDO
                   &mkp MB3           &mkp MB1           &mkp MB2           &mkp MB2           &mkp MB1           &mkp MB3
             >;
         };
