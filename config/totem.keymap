@@ -1,7 +1,7 @@
 /*
  * Miryoku layout for Totem (38-key, seeeduino_xiao_ble)
  * Base: Colemak-DH with home-row mods
- * Layers: MEDIA, NAV, MOUSE, SYM, NUM, FN
+ * All 10 Miryoku layers: BASE, EXTRA, TAP, BUTTON, NAV, MOUSE, MEDIA, NUM, SYM, FUN
  *
  * Mapping (from miryoku_zmk totem.h):
  *   pos0-9   = K00-K09 (top row)
@@ -21,12 +21,15 @@
 #include <dt-bindings/zmk/pointing.h>
 
 #define BASE  0
-#define MEDIA 1
-#define NAV   2
-#define MOUSE 3
-#define SYM   4
-#define NUM   5
-#define FN    6
+#define EXTRA 1
+#define TAP   2
+#define BUTTON 3
+#define NAV   4
+#define MOUSE 5
+#define MEDIA 6
+#define NUM   7
+#define SYM   8
+#define FUN   9
 
 &mt {
     quick-tap-ms = <100>;
@@ -60,18 +63,40 @@
 &kp Q             &kp W              &kp F              &kp P              &kp B              &kp J              &kp L              &kp U              &kp Y              &kp SQT
 &mt LGUI A        &mt LALT R         &mt LCTRL S        &mt LSHFT T        &kp G              &kp M              &mt RSHFT N        &mt RCTRL E        &mt RALT I         &mt RGUI O
 &kp Q             &kp Z              &kp X              &kp C              &kp D              &kp V              &kp K              &kp H              &kp COMMA          &kp DOT            &kp FSLH           &kp BSLH
-                  &lt MEDIA ESC      &lt NAV SPACE      &lt MOUSE TAB      &lt SYM ENTER      &lt NUM BACKSPACE  &lt FN DELETE
+                  &lt MEDIA ESC      &lt NAV SPACE      &lt MOUSE TAB      &lt SYM ENTER      &lt NUM BACKSPACE  &lt FUN DELETE
             >;
         };
 
-        media_layer {
-            label = "MEDIA";
+        extra_layer {
+            label = "EXTRA";
 
             bindings = <
-&bootloader       &none              &none              &trans             &none              &rgb_ug RGB_TOG    &rgb_ug RGB_EFF    &rgb_ug RGB_HUI    &rgb_ug RGB_SAI    &rgb_ug RGB_BRI
-&kp LGUI          &kp LALT           &kp LCTRL          &kp LSHFT          &none              &ext_power EP_TOG  &kp C_PREV         &kp C_VOL_DN       &kp C_VOL_UP       &kp C_NEXT
-&bootloader       &none              &kp RALT           &none              &none              &none              &out OUT_TOG        &bt BT_SEL 0       &bt BT_SEL 1       &bt BT_SEL 2       &bt BT_SEL 3       &rgb_ug RGB_BRI
-                  &none              &none              &none              &kp C_STOP         &kp C_PP           &kp C_MUTE
+&kp Q             &kp W              &kp E              &to BASE           &kp T              &kp Y              &kp U              &kp I              &kp O              &kp P
+&kp A             &kp S              &kp D              &kp F              &kp G              &kp H              &kp J              &kp K              &kp L              &kp SQT
+&kp Q             &kp Z              &kp X              &kp C              &kp V              &kp B              &kp N              &kp M              &kp COMMA          &kp DOT            &kp SLASH          &kp BSLH
+                  &kp ESC            &kp SPACE          &kp TAB            &kp RET            &kp BSPC           &kp DEL
+            >;
+        };
+
+        tap_layer {
+            label = "TAP";
+
+            bindings = <
+&kp Q             &kp W              &kp F              &to BASE           &kp B              &kp J              &kp L              &kp U              &kp Y              &kp SQT
+&kp A             &kp R              &kp S              &kp T              &kp G              &kp M              &kp N              &kp E              &kp I              &kp O
+&kp Q             &kp Z              &kp X              &kp C              &kp D              &kp V              &kp K              &kp H              &kp COMMA          &kp DOT            &kp SLASH          &kp BSLH
+                  &kp ESC            &kp SPACE          &kp TAB            &kp RET            &kp BSPC           &kp DEL
+            >;
+        };
+
+        button_layer {
+            label = "BUTTON";
+
+            bindings = <
+&kp K_UNDO        &kp LS(DEL)        &kp LS(INS)        &to BASE           &kp K_AGAIN        &kp K_AGAIN        &kp LC(INS)        &kp LS(INS)        &kp LS(DEL)        &kp K_UNDO
+&kp LGUI          &kp LALT           &kp LCTRL          &kp LSHFT          &none              &none              &kp LSHFT          &kp LCTRL          &kp LALT           &kp LGUI
+&kp K_UNDO        &kp LS(DEL)        &kp LS(INS)        &kp LC(INS)        &kp K_AGAIN        &kp K_AGAIN        &kp LC(INS)        &kp LS(INS)        &kp LS(DEL)        &kp K_UNDO
+                  &mkp MB3           &mkp MB1           &mkp MB2           &mkp MB2           &mkp MB1           &mkp MB3
             >;
         };
 
@@ -79,9 +104,9 @@
             label = "NAV";
 
             bindings = <
-&bootloader       &none              &none              &trans             &none              &kp K_AGAIN        &kp LS(INS)        &kp LC(INS)        &kp LS(DEL)        &kp K_UNDO
-&kp LGUI          &kp LALT           &kp LCTRL          &kp LSHFT          &none              &caps_word          &kp LEFT           &kp DOWN           &kp UP             &kp RIGHT
-&bootloader       &none              &kp RALT           &none              &none              &none              &kp INS            &kp HOME           &kp PG_DN          &kp PG_UP          &kp END            &kp K_UNDO
+&bootloader       &to TAP            &to EXTRA          &trans             &none              &kp K_AGAIN        &kp LS(INS)        &kp LC(INS)        &kp LS(DEL)        &kp K_UNDO
+&kp LGUI          &kp LALT           &kp LCTRL          &kp LSHFT          &none              &caps_word         &kp LEFT           &kp DOWN           &kp UP             &kp RIGHT
+&bootloader       &none              &kp RALT           &to NUM            &to BUTTON         &none              &kp INS            &kp HOME           &kp PG_DN          &kp PG_UP          &kp END            &kp K_UNDO
                   &none              &none              &none              &kp RET            &kp BSPC           &kp DEL
             >;
         };
@@ -90,21 +115,21 @@
             label = "MOUSE";
 
             bindings = <
-&bootloader       &none              &none              &trans             &none              &kp K_AGAIN        &kp LS(INS)        &kp LC(INS)        &kp LS(DEL)        &kp K_UNDO
+&bootloader       &to TAP            &to EXTRA          &trans             &none              &kp K_AGAIN        &kp LS(INS)        &kp LC(INS)        &kp LS(DEL)        &kp K_UNDO
 &kp LGUI          &kp LALT           &kp LCTRL          &kp LSHFT          &none              &none              &mmv MOVE_LEFT     &mmv MOVE_DOWN     &mmv MOVE_UP       &mmv MOVE_RIGHT
-&bootloader       &none              &kp RALT           &none              &none              &none              &none              &msc SCRL_LEFT     &msc SCRL_DOWN     &msc SCRL_UP       &msc SCRL_RIGHT    &kp K_UNDO
+&bootloader       &none              &kp RALT           &to SYM            &to BUTTON         &none              &none              &msc SCRL_LEFT     &msc SCRL_DOWN     &msc SCRL_UP       &msc SCRL_RIGHT    &kp K_UNDO
                   &none              &none              &none              &mkp MB2           &mkp MB1           &mkp MB3
             >;
         };
 
-        symbol_layer {
-            label = "SYM";
+        media_layer {
+            label = "MEDIA";
 
             bindings = <
-&kp LBRC          &kp AMPS           &kp ASTRK          &kp LPAR           &kp RBRC           &none              &trans             &none              &none              &bootloader
-&kp COLON         &kp DLLR           &kp PRCNT          &kp CARET          &kp PLUS           &none              &kp LSHFT          &kp LCTRL          &kp LALT           &kp LGUI
-&kp LBRC          &kp TILDE          &kp EXCL           &kp AT             &kp HASH           &kp PIPE           &none              &none              &none              &kp RALT           &none              &bootloader
-                  &kp LPAR           &kp RPAR           &kp UNDER          &none              &none              &none
+&bootloader       &to TAP            &to EXTRA          &trans             &none              &rgb_ug RGB_TOG    &rgb_ug RGB_EFF    &rgb_ug RGB_HUI    &rgb_ug RGB_SAI    &rgb_ug RGB_BRI
+&kp LGUI          &kp LALT           &kp LCTRL          &kp LSHFT          &none              &ext_power EP_TOG  &kp C_PREV         &kp C_VOL_DN       &kp C_VOL_UP       &kp C_NEXT
+&bootloader       &none              &kp RALT           &to FUN            &to BUTTON         &none              &out OUT_TOG        &bt BT_SEL 0       &bt BT_SEL 1       &bt BT_SEL 2       &bt BT_SEL 3       &rgb_ug RGB_BRI
+                  &none              &none              &none              &kp C_STOP         &kp C_PP           &kp C_MUTE
             >;
         };
 
@@ -112,20 +137,31 @@
             label = "NUM";
 
             bindings = <
-&kp LBKT          &kp N7             &kp N8             &kp N9             &kp RBKT           &none              &trans             &none              &none              &bootloader
+&kp LBKT          &kp N7             &kp N8             &kp N9             &kp RBKT           &none              &trans             &to EXTRA          &to TAP            &bootloader
 &kp SEMI          &kp N4             &kp N5             &kp N6             &kp EQUAL          &none              &kp LSHFT          &kp LCTRL          &kp LALT           &kp LGUI
-&kp LBKT          &kp GRAVE          &kp N1             &kp N2             &kp N3             &kp BSLH           &none              &none              &none              &kp RALT           &none              &bootloader
+&kp LBKT          &kp GRAVE          &kp N1             &kp N2             &kp N3             &kp BSLH           &none              &to BUTTON         &to NAV            &kp RALT           &none              &bootloader
                   &kp DOT            &kp N0             &kp MINUS          &none              &none              &none
             >;
         };
 
-        fn_layer {
-            label = "FN";
+        symbol_layer {
+            label = "SYM";
 
             bindings = <
-&kp F12           &kp F7             &kp F8             &kp F9             &kp PSCRN          &none              &trans             &none              &none              &bootloader
+&kp LBRC          &kp AMPS           &kp ASTRK          &kp LPAR           &kp RBRC           &none              &trans             &to EXTRA          &to TAP            &bootloader
+&kp COLON         &kp DLLR           &kp PRCNT          &kp CARET          &kp PLUS           &none              &kp LSHFT          &kp LCTRL          &kp LALT           &kp LGUI
+&kp LBRC          &kp TILDE          &kp EXCL           &kp AT             &kp HASH           &kp PIPE           &none              &to BUTTON         &to MOUSE          &kp RALT           &none              &bootloader
+                  &kp LPAR           &kp RPAR           &kp UNDER          &none              &none              &none
+            >;
+        };
+
+        fn_layer {
+            label = "FUN";
+
+            bindings = <
+&kp F12           &kp F7             &kp F8             &kp F9             &kp PSCRN          &none              &trans             &to EXTRA          &to TAP            &bootloader
 &kp F11           &kp F4             &kp F5             &kp F6             &kp SLCK           &none              &kp LSHFT          &kp LCTRL          &kp LALT           &kp LGUI
-&kp F12           &kp F10            &kp F1             &kp F2             &kp F3             &kp PAUSE_BREAK    &none              &none              &none              &kp RALT           &none              &bootloader
+&kp F12           &kp F10            &kp F1             &kp F2             &kp F3             &kp PAUSE_BREAK    &none              &to BUTTON         &to MEDIA          &kp RALT           &none              &bootloader
                   &kp K_APP          &kp SPACE          &kp TAB            &none              &none              &none
             >;
         };
