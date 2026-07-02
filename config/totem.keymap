@@ -151,10 +151,10 @@
         fn_layer {
             label = "FUN";
             bindings = <
-       &kp F12  &kp F7  &kp F8     &kp F9     &kp PSCRN          &none  &to 10     &to 1      &to 2     &bootloader
-       &kp F11  &kp F4  &kp F5     &kp F6     &kp SLCK           &none  &kp LSHFT  &kp LCTRL  &kp LALT  &kp LGUI
-&to 0  &kp F10  &kp F1  &kp F2     &kp F3     &kp PAUSE_BREAK    &none  &to 3      &to 6      &kp RALT  &none        &bootloader
-                        &kp K_APP  &kp SPACE  &kp TAB            &none  &none      &none
+       &kp F12           &kp F7           &kp F8               &kp F9             &kp PSCRN          &none  &to 10     &to 1      &to 2     &bootloader
+       &mt LEFT_GUI F11  &mt LEFT_ALT F4  &mt LEFT_CONTROL F5  &mt LEFT_SHIFT F6  &kp SLCK           &none  &kp LSHFT  &kp LCTRL  &kp LALT  &kp LGUI
+&to 0  &kp F10           &kp F1           &kp F2               &kp F3             &kp PAUSE_BREAK    &none  &to 3      &to 6      &kp RALT  &none        &bootloader
+                                          &kp K_APP            &kp SPACE          &kp TAB            &none  &none      &none
             >;
         };
 
