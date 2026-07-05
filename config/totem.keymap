@@ -32,14 +32,14 @@
 
 &mt {
     flavor = "tap-preferred";
-    tapping-term-ms = <200>;
-    quick-tap-ms = <200>;
+    tapping-term-ms = <160>;
+    quick-tap-ms = <160>;
 };
 
 &lt {
     flavor = "tap-preferred";
-    tapping-term-ms = <200>;
-    quick-tap-ms = <200>;
+    tapping-term-ms = <160>;
+    quick-tap-ms = <160>;
 };
 
 / {
@@ -154,7 +154,7 @@
        &kp F12           &kp F7           &kp F8               &kp F9             &kp PSCRN          &none  &to 10     &to 1      &to 2     &bootloader
        &mt LEFT_GUI F11  &mt LEFT_ALT F4  &mt LEFT_CONTROL F5  &mt LEFT_SHIFT F6  &kp SLCK           &none  &kp LSHFT  &kp LCTRL  &kp LALT  &kp LGUI
 &to 0  &kp F10           &kp F1           &kp F2               &kp F3             &kp PAUSE_BREAK    &none  &to 3      &to 6      &kp RALT  &none        &bootloader
-                                          &kp K_APP            &kp SPACE          &kp TAB            &none  &none      &none
+                                          &kp ESCAPE           &lt 7 SPACE        &kp LEFT_SHIFT     &none  &none      &none
             >;
         };
 
